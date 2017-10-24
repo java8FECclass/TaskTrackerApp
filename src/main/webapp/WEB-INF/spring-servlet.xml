@@ -9,7 +9,8 @@
     <!-- Specifying base package of the Components like Controller, Service,DAO -->
     <context:component-scan base-package="com.oosdclass.taskTrackerApp" />
     
-    <!-- Specifying beans -->
+    <!-- Specifying beans, every app has more than one objects, 
+    your asking spring to manage these object for you using IOC -->
     <bean id="employeeDAOImpl" class="com.oosdclass.taskTrackerApp.dao.impl.EmployeeDAOImpl">
 		<property name="jdbcTemplate" ref="jdbcTemplate" />
 	</bean>
@@ -26,7 +27,7 @@
     <!-- Specifying the Resource location to load JS(Java script), CSS, Images etc -->
     <mvc:resources mapping="/resources/**" location="/resources/" />
  
-    <!-- View Resolver -->
+    <!-- Telling spring load views from WEB-INF/PAGES folder -->
     <bean
         class="org.springframework.web.servlet.view.InternalResourceViewResolver">
         <property name="prefix" value="/WEB-INF/pages/" />

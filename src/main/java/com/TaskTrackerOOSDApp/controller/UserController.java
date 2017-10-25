@@ -12,6 +12,8 @@ import com.TaskTrackerOOSDApp.model.User;
 @Controller
 public class UserController {
 	
+// (/) method (GET) is the FIRST method that is called when the user accesses our app using
+// the root context and display's the home page, which is nothing but "login"
 	@RequestMapping(value = "/")
 	public ModelAndView login(ModelAndView model)  {
 		User user = new User();
@@ -19,7 +21,8 @@ public class UserController {
 		model.setViewName("home");
 		return model;
 	}
-	
+// (/login) method (POST) is mapped to /login URL where user post/submits the form
+//	which is mapped to user object and we pass to service	
 	@RequestMapping(value = "/login", method= RequestMethod.POST)
 	public ModelAndView login(User userLoginFormObject)  {
 		ModelAndView model = null;

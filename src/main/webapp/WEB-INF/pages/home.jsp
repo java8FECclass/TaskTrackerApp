@@ -28,7 +28,7 @@
 		<div class="row main">
 			<div class="main-login main-center">
 				<!-- form is a spring tag for creating a  form in this example login form for user to submit form to corresponding spring MVC method  -->
-				<!-- action is an attribute that maps the url to the corresonding spring mvc method  -->
+				<!-- action is an attribute that maps the url to the corresponding spring mvc method  -->
 				<!-- in this case by saying action="login" spring looks for a method whose @RequestMapping() is "/login" -->
 				<!-- method is an attribute that specifies what kind of http request(get,post,put,delete, update) we are making -->
 				<!-- in this case we are posting the form the a method by mapping it to a url that we specified in action attribute -->
@@ -44,7 +44,7 @@
 								<span class="input-group-addon"><i class="fa fa-users fa"
 									aria-hidden="true"></i></span>
 
-								<!-- mapping username entered by the user to the instace variable name in User pojo(object) in model package by saying path="name"  -->
+								<!-- mapping username entered by the user to the instance variable name in User pojo(object) in model package by saying path="name"  -->
 								<form:input path="name" placeholder="username" type="text"
 									class="form-control" />
 
@@ -58,7 +58,7 @@
 							<div class="input-group">
 								<span class="input-group-addon"><i
 									class="fa fa-lock fa-lg" aria-hidden="true"></i></span>
-								<!-- mapping password entered by the user to the instace variable password in User pojo(object) in model package by saying path="password"  -->
+								<!-- mapping password entered by the user to the instance variable password in User pojo(object) in model package by saying path="password"  -->
 								<form:input path="password" type="password" class="form-control"
 									placeholder="password" />
 

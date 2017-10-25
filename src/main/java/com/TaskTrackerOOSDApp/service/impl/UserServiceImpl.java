@@ -1,7 +1,9 @@
 package com.TaskTrackerOOSDApp.service.impl;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.TaskTrackerOOSDApp.dao.UserDao;
 import com.TaskTrackerOOSDApp.model.User;
 import com.TaskTrackerOOSDApp.service.UserService;
 
@@ -16,14 +18,16 @@ import com.TaskTrackerOOSDApp.service.UserService;
 @Service
 public class UserServiceImpl implements UserService  {
 	
+	@Autowired
+	UserDao userDao;
+	
 	
 	public boolean isUserValid(User user) {
 		String userLoginName = user.getName();
 		String userLoginPassword = user.getPassword();
 		//call UserDao interface
 		//userDao.retrieveByUserName(userLoginName);
-		//mocking behavior
-		User dbUser = getmockDAO(userLoginName);
+		User dbUser = userDao.retrieveByUserName(userLoginName);
 		String userDbName = dbUser.getName();
 		String userDbPassword = dbUser.getPassword();
 		
@@ -37,14 +41,6 @@ public class UserServiceImpl implements UserService  {
 		
 		
 	}
-	
-	public User getmockDAO(String username) {
-		User dbUser = new User();
-		dbUser.setName("admin");
-		dbUser.setPassword("pass");
-		return dbUser;
-	}
-	
 	
 
 }

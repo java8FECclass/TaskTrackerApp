@@ -14,6 +14,11 @@
 	<context:property-placeholder location="classpath:application.properties" />
 
 	<mvc:annotation-driven />
+	
+	
+	<bean id="taskDaoImpl" class="com.TaskTrackerOOSDApp.dao.impl.TaskDAOImpl">
+		<property name="jdbcTemplate" ref="jdbcTemplate" />
+	</bean>
 
 	<bean id="userDaoImpl" class="com.TaskTrackerOOSDApp.dao.impl.UserDaoImpl">
 		<property name="jdbcTemplate" ref="jdbcTemplate" />

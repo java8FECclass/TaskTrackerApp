@@ -44,7 +44,6 @@ public class TaskDAOImpl implements TaskDAO {
 			task.setTaskId(rs.getInt(1));
 			task.setTaskDescription(rs.getString(2));
 			task.setAssignedTo(rs.getString(3));
-			task.setStatus(rs.getString(3));
 			task.setStatus(rs.getString(4));
 			list.add(task);
 		}

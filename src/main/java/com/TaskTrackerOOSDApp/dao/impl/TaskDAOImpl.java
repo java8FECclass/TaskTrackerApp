@@ -15,16 +15,16 @@ import com.TaskTrackerOOSDApp.model.Task;
 // public class task implements the DAO
 
 public class TaskDAOImpl implements TaskDAO {
-	
-// initiate or instantiate the JDBC Template
+
+	// initiate or instantiate the JDBC Template
 	private JdbcTemplate jdbcTemplate;
 
 	// insert template to use JDBC and perform CRUD
 	public void setJdbcTemplate(JdbcTemplate jdbcTemplate) {
 		this.jdbcTemplate = jdbcTemplate;
 	}
-// annotate method with @override to set up spring remote
-	
+	// annotate method with @override to set up spring remote
+
 	@Override
 	public List<Task> retrieveAlltasks() {
 		// set up SQL code to send to query the table within the sql database
@@ -48,10 +48,8 @@ public class TaskDAOImpl implements TaskDAO {
 			task.setStatus(rs.getString(4));
 			list.add(task);
 		}
+		/* this looks horrible but gets rid of multiple errors */
 		return list;
 }
-		/* this looks horrible but gets rid of multiple errors */
-});	
-		return tasklist;
-		}
-}
+
+});return tasklist;}}

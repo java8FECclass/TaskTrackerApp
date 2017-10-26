@@ -16,6 +16,14 @@ import com.TaskTrackerOOSDApp.model.User;
 //by using spring JDBC to connect to DB and retrieve data from User table
 @Repository
 public class UserDaoImpl implements UserDao {
+
+//	@Override
+//	public User retrieveByUserName(String name) {
+//		User u = new User();
+//		u.setName("admin");
+//		u.setPassword("pass");
+//		return u;
+//	}
 	
 	private JdbcTemplate jdbcTemplate;
 	

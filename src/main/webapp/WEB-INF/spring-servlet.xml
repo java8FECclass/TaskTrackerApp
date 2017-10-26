@@ -15,6 +15,14 @@
 
 	<mvc:annotation-driven />
 
+	<bean id="userDaoImpl" class="com.TaskTrackerOOSDApp.dao.impl.UserDaoImpl">
+		<property name="jdbcTemplate" ref="jdbcTemplate" />
+	</bean>
+
+	<bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
+		<property name="dataSource" ref="dataSource" />
+	</bean>
+
 	<!-- Specifying the Resource location to load JS, CSS, Images etc -->
 	<mvc:resources mapping="/resources/**" location="/resources/" />
 
@@ -26,13 +34,14 @@
 	</bean>
 
 	<!-- DataSource -->
-	<!-- <bean class="org.springframework.jdbc.datasource.DriverManagerDataSource"
+
+	<bean class="org.springframework.jdbc.datasource.DriverManagerDataSource"
 		id="dataSource">
 		<property name="driverClassName" value="${database.driver}"></property>
 		<property name="url" value="${database.url}"></property>
 		<property name="username" value="${database.user}"></property>
 		<property name="password" value="${database.password}"></property>
-	</bean> -->
+	</bean>
 
-	
+
 </beans>

@@ -31,9 +31,11 @@ public class UserController {
 	@RequestMapping(value = "/login", method= RequestMethod.POST)
 	public ModelAndView login(User userLoginFormObject)  {
 		ModelAndView model = null;
-// 	passing the user login form object logic that we captured from user to service to validate username and password	
+// 	passing the user login form object logic that we captured from user to service to validate username and password
+		//when we add the employee roles feature we will need to be another boolean method
+		//add an else if statement for both possible returns of admin or task page
 		if(userService.isUserValid(userLoginFormObject)) {
-			model = new ModelAndView("tasks");
+			model = new ModelAndView("redirect:/adminTasks");
 		}
 		else {
 			model = new ModelAndView("home");

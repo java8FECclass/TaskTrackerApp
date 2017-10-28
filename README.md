@@ -29,6 +29,8 @@ IF YOU GET STUCK AT ANY POINT !!!
           -> Extract .zip file-> Copy Server Files To C://Workspace/tools Folder.
 
 4. Import the TaskTrackerApp From Git.
+
+          In Eclipse 
           
           File -> Import -> Git -> Projects From Git > Clone URI.
           
@@ -49,6 +51,8 @@ IF YOU GET STUCK AT ANY POINT !!!
           Click Browse To Select your "tools" Folder you Created in Step 3. -> Select OK -> Select Finish.
           
           Wait for your App to load. 
+          
+          
           
           
 6. Successfully Running Your App

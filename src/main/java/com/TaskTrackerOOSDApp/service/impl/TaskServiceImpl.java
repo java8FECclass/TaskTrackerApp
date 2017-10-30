@@ -33,4 +33,20 @@ public class TaskServiceImpl implements TaskService {
 
 	}
 
+	@Override
+	public void updateAssignedTo(Integer taskId, String username) {
+		Task task = taskDAO.retrieveOne(taskId);
+		task.setAssignedTo(username);
+		taskDAO.updateTask(task);
+
+	}
+
+	@Override
+	public void updateStatus(Integer taskId, String status) {
+		Task task = taskDAO.retrieveOne(taskId);
+		task.setStatus(status);
+		taskDAO.updateTask(task);
+
+	}
+
 }

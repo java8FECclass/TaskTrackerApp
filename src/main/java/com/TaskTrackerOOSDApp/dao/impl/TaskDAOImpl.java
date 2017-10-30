@@ -87,10 +87,14 @@ public class TaskDAOImpl implements TaskDAO {
 	}
 
 	@Override
+	//Public method titled "updateTask" with  assigned 
+	
 	public void updateTask(Task task) {
-		// TODO Auto-generated method stub
+		// Statement implement update task class updates status and field "assignedTo"
+		// and retrieves data from overridden method in the Service Layer to change
+		// default to user name
 		String sql = "UPDATE task SET (status, assignedto) VALUES (?,?) where ID = ?";
-		jdbcTemplate.update(sql, new Object[] {task.getStatus(), task.getAssignedTo(), task.getTaskId()});
+		jdbcTemplate.update(sql, new Object[] { task.getStatus(), task.getAssignedTo(), task.getTaskId() });
 
 	}
 }

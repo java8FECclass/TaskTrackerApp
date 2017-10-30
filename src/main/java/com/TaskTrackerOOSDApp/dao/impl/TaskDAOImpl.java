@@ -89,6 +89,8 @@ public class TaskDAOImpl implements TaskDAO {
 	@Override
 	public void updateTask(Task task) {
 		// TODO Auto-generated method stub
+		String sql = "UPDATE task SET (status, assignedto) VALUES (?,?) where ID = ?";
+		jdbcTemplate.update(sql, new Object[] {task.getStatus(), task.getAssignedTo(), task.getTaskId()});
 
 	}
 }

@@ -9,12 +9,12 @@ public interface TaskDAO {
 	// retrieve List of Tasks from task table
 	List<Task> retrieveAlltasks();
 
-	// creating a new entry using createtask into the task table
+	// creating a new entry using into the task table
 	void createtask(Task task);
 	
-	// RETRIEVE only one record by task ID
+	// RETRIEVE one task by taskID
 	Task retrieveOne(Integer taskId);
 	
-	// UPDATE a Task based on questions to be answered later
+	// UPDATE a Task based on status and assignedto info passed by service
 	void updateTask(Task task);
 }

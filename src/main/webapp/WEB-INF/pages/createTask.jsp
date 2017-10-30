@@ -19,13 +19,10 @@
   <!-- This creates a comment form that allows Admin to create task. -->
   <form:form action="saveTask" class="form-horizontal" method="post"
 					modelAttribute="task">
-    <div class="form-group">
-      <label for="comment">Comment:</label>
-      <textarea class="form-control"  id="comment"></textarea>
-    </div>
+    
     <br>
     <!-- This Is A Path Reference To Task Descriptions Model Object-->
-    <form:input path="taskDescription" rows="5" placeholder="enter a task description" type="text"
+    <form:textarea path="taskDescription" rows="5" placeholder="enter a task description" type="text"
 									class="form-control" />
      <br>
      <!-- This Creates A Blank Line , That Puts A Space in between the form and the button -->

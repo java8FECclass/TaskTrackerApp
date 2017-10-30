@@ -13,7 +13,7 @@ import com.TaskTrackerOOSDApp.service.TaskService;
 public class TaskServiceImpl implements TaskService {
 
 	private static final String DEFAULT_STATUS = "OPEN";
-	private static final String DEFAULT_ASSIGNEDTO = "IN PROGRESS";
+	private static final String DEFAULT_ASSIGNEDTO = "UN-ASSIGNED";
 
 	// Autowired the completed DAO to the service layer ;)
 	@Autowired

@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.TaskTrackerOOSDApp.model.Task;
@@ -30,10 +31,20 @@ public class TaskController {
 		
 		@RequestMapping(value = "/taskForm")
 		public ModelAndView createTask(ModelAndView model)  {
+			Task task = new Task();
+			model.addObject("task", task);
 			model.setViewName("createTask");
 			return model;		
 			}
-	
+		
+		@RequestMapping(value = "/saveTask",method=RequestMethod.POST)
+		public ModelAndView createTask(Task taskformobject) {
+			ModelAndView model = null;
+			taskService.createTask(taskformobject);
+			model = new ModelAndView("redirect:/adminTasks");
+			return model;
+			
+		}
 	//
 
 }

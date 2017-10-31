@@ -6,6 +6,11 @@ import com.TaskTrackerOOSDApp.model.User;
 //Input to this method would be user object provided by front-end layer
 //example isUserValid(User user); -> return boolean
 public interface UserService {
+
 	boolean isUserValid(User user);
+
+	boolean doesUserExist(User user);
+
+	boolean isUserAdmin(User user);
 
 }

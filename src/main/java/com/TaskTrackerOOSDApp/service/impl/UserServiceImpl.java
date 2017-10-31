@@ -36,4 +36,30 @@ public class UserServiceImpl implements UserService {
 
 	}
 
+	@Override
+	public boolean doesUserExist(User user) {
+		String userCheckName = user.getName();
+		// call UserDao interface
+		// userDao.retrieveByUserName(userLoginName);
+		User dbUser = userDao.retrieveByUserName(userCheckName);
+		if (dbUser == null) {
+			return false;
+		} else {
+			return true;
+		}
+
+	}
+
+	@Override
+	public boolean isUserAdmin(User user) {
+
+		if (user.getName().equals("admin")) {
+			return true;
+		}
+
+		else {
+			return false;
+		}
+	}
+
 }

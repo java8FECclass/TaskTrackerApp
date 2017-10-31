@@ -13,36 +13,41 @@ import com.TaskTrackerOOSDApp.service.UserService;
 //methods by leveraging spring MVC
 @Controller
 public class UserController {
-// auto-wiring user service is injecting userService dependency into this controller
+	// auto-wiring user service is injecting userService dependency into this
+	// controller
 	@Autowired
 	UserService userService;
-	
-// (/) method (GET) is the FIRST method that is called when the user accesses our app using
-// the root context and display's the home page, which is nothing but "login"
+
+	// (/) method (GET) is the FIRST method that is called when the user accesses
+	// our app using
+	// the root context and display's the home page, which is nothing but "login"
 	@RequestMapping(value = "/")
-	public ModelAndView login(ModelAndView model)  {
+	public ModelAndView login(ModelAndView model) {
 		User user = new User();
 		model.addObject("user", user);
 		model.setViewName("home");
 		return model;
 	}
-// (/login) method (POST) is mapped to /login URL where user post/submits the form
-//	which is mapped to user object and we pass to service	
-	@RequestMapping(value = "/login", method= RequestMethod.POST)
-	public ModelAndView login(User userLoginFormObject)  {
+
+	// (/login) method (POST) is mapped to /login URL where user post/submits the
+	// form
+	// which is mapped to user object and we pass to service
+	@RequestMapping(value = "/login", method = RequestMethod.POST)
+	public ModelAndView login(User userLoginFormObject) {
 		ModelAndView model = null;
-// 	passing the user login form object logic that we captured from user to service to validate username and password
-		//when we add the employee roles feature we will need to be another boolean method
-		//add an else if statement for both possible returns of admin or task page
-		if(userService.isUserValid(userLoginFormObject)) {
+		// passing the user login form object logic that we captured from user to
+		// service to validate username and password
+		// when we add the employee roles feature we will need to be another boolean
+		// method
+		// add an else if statement for both possible returns of admin or task page
+		if (userService.isUserValid(userLoginFormObject)) {
 			model = new ModelAndView("redirect:/adminTasks");
-		}
-		else {
+		} else {
 			model = new ModelAndView("home");
 			model.addObject("error", "Password or Username is invalid: Try logging in again");
 		}
 		return model;
-		
+
 	}
 
 }

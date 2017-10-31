@@ -75,11 +75,13 @@
 
 
 				</form:form>
+				<c:if test="not empty ${error}">
 				<table>
 					<tr>
 						<td class="alert alert-danger">${error}</td>
 					</tr>
 				</table>
+				</c:if>
 			</div>
 		</div>
 

@@ -6,27 +6,31 @@
        http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd
        http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
 
-	<!-- Specifying base package of the Components like Controller, Service, DAO -->
-	<context:component-scan base-package="com.TaskTrackerOOSDApps" />
+	<!-- Specifying base package of the Components like Controller, Service, 
+		DAO -->
+	<context:component-scan base-package="com.TaskTrackerOOSDApp" />
+
+	<!-- Getting Database properties -->
+	<context:property-placeholder location="classpath:application.properties" />
+
 	<mvc:annotation-driven />
-	
-	<!-- UserDAOImpl bean(object) is dependent on jdbcTemplate to perform CRUD -->
-	<!-- So we are informing spring that UserDAOImpl is a bean and its dependent on jdbc template -->
-	<!-- So spring will inject the jdbcTemplate dependency into UserDAOImpl when required -->
-	<bean id="userDaoImpl" class="com.TaskTrackerOOSDApp.dao.impl.UserDaoImpl">
-		<property name="jdbcTemplate" ref="jdbcTemplate" />
-	</bean>
-	
-	
-	
-	<!-- comments that apply to UserDAOImpl apply to TaskDAOImpl bean(object) too -->
+
+
 	<bean id="taskDaoImpl" class="com.TaskTrackerOOSDApp.dao.impl.TaskDAOImpl">
 		<property name="jdbcTemplate" ref="jdbcTemplate" />
 	</bean>
-	
-	
 
-	<!-- jdbc template requires data source(connection to DB example: db URL, username, Pass) and driver -->
+	<!-- UserDAOImpl bean(object) is dependent on jdbcTemplate to perform CRUD -->
+	<!-- So we are informing spring that UserDAOImpl is a bean and its dependent 
+		on jdbc template -->
+	<!-- So spring will inject the jdbcTemplate dependency into UserDAOImpl 
+		when required -->
+	<bean id="userDaoImpl" class="com.TaskTrackerOOSDApp.dao.impl.UserDaoImpl">
+		<property name="jdbcTemplate" ref="jdbcTemplate" />
+	</bean>
+
+	<!-- jdbc template requires data source(connection to DB example: db URL, 
+		username, Pass) and driver -->
 	<!-- to connect to DB and perform CRUD -->
 	<!-- We are informing spring to inject datasource dependency into jdbcTemplate -->
 	<bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
@@ -37,21 +41,16 @@
 	<mvc:resources mapping="/resources/**" location="/resources/" />
 
 	<!-- View Resolver -->
-	<!-- We are informing InternalResourceViewResolver class provided by spring where to look for JSPs -->
-	<!-- When we setViewName("home") spring will automatically look for home.jsp in the WEB-INF folder -->
 	<bean
 		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 		<property name="prefix" value="/WEB-INF/pages/" />
 		<property name="suffix" value=".jsp" />
 	</bean>
-	
-	<!-- Getting Database properties(Telling spring where to look for application properties) -->
-	<!-- application properties file contains all the properties required for the app to connect to DB  -->
-	<context:property-placeholder location="classpath:application.properties" />
 
 	<!-- DataSource -->
-	<!-- We are defining the data sources properties like driver name, username, URL and password  -->
-	<!-- That we specified in src/main/resources/application.properties file  -->
+	<!-- We are defining the data sources properties like driver name, username, 
+		URL and password -->
+	<!-- That we specified in src/main/resources/application.properties file -->
 	<bean class="org.springframework.jdbc.datasource.DriverManagerDataSource"
 		id="dataSource">
 		<property name="driverClassName" value="${database.driver}"></property>

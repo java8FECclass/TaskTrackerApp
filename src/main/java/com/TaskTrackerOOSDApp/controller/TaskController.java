@@ -50,4 +50,12 @@ public class TaskController {
 
 	}
 
+	@RequestMapping(value = "/empTasks")
+	public ModelAndView viewEmpTasks(ModelAndView model) {
+		List<Task> taskList = taskService.retrieveAll();
+		model.addObject("taskList", taskList);
+		model.setViewName("empTasks");
+		return model;
+
+	}
 }

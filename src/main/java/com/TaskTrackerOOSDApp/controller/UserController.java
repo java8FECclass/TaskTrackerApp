@@ -40,9 +40,21 @@ public class UserController {
 		// when we add the employee roles feature we will need to be another boolean
 		// method
 		// add an else if statement for both possible returns of admin or task page
-		if (userService.isUserValid(userLoginFormObject)) {
-			model = new ModelAndView("redirect:/adminTasks");
-		} else {
+		if (!userService.doesUserExist(userLoginFormObject)) {
+			model = new ModelAndView("home");
+			model.addObject("error", "Username does not exist");
+		}
+
+		else if (userService.isUserValid(userLoginFormObject)) {
+			if (userService.isUserAdmin(userLoginFormObject)) {
+				model = new ModelAndView("redirect:/adminTasks");
+			} else {
+				model = new ModelAndView("redirect:/empTasks");
+			}
+
+		}
+
+		else {
 			model = new ModelAndView("home");
 			model.addObject("error", "Password or Username is invalid: Try logging in again");
 		}

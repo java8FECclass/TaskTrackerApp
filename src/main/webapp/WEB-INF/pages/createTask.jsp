@@ -28,8 +28,8 @@
      <!-- This Creates A Blank Line , That Puts A Space in between the form and the button -->
       <br>    
       <!-- Below is the creation of the button Admin must push to Create Task. -->>
-    <input type="submit" value="Create Task"
-	class="btn btn-success btn-block">
+    <input type="submit" value="Submit new Task"
+	class="btn btn-danger btn-block">
     
   </form:form>
 </div>

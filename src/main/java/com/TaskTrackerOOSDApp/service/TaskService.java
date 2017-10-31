@@ -13,5 +13,7 @@ public interface TaskService {
 	void updateAssignedTo(Integer taskId, String username);
 	
 	void updateStatus(Integer taskId, String status);
+	
+	Task retrieveTask(Integer taskId);
 
 }

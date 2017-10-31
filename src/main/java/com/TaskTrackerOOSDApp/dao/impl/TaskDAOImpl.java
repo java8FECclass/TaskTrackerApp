@@ -66,7 +66,7 @@ public class TaskDAOImpl implements TaskDAO {
 	public Task retrieveOne(Integer taskId) {
 
 		// SQL statement to retrieve one line based on TASK ID
-		String sql = "SELECT * from task (WHERE ID = ?)";
+		String sql = "SELECT * from task where ID = ?";
 		Task task = (Task) jdbcTemplate.queryForObject(sql, new Object[] { taskId }, new RowMapper<Task>() {
 
 			@Override

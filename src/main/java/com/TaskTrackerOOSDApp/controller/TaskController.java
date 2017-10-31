@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
@@ -19,10 +20,9 @@ public class TaskController {
 	// controller
 	@Autowired
 	TaskService taskService;
-	//
+	
 	// we are created an array task list and getting the content of the data for
 	// service layer and passing it to the task page
-
 	@RequestMapping(value = "/adminTasks")
 	public ModelAndView viewTasks(ModelAndView model) {
 		List<Task> taskList = taskService.retrieveAll();
@@ -30,9 +30,9 @@ public class TaskController {
 		model.setViewName("adminTasks");
 		return model;
 	}
+	
 	// if admin user pushes create task button then it goes to task creation
-	// page(dummypage)
-
+	// page which would display task form. 
 	@RequestMapping(value = "/taskForm")
 	public ModelAndView createTask(ModelAndView model) {
 		Task task = new Task();
@@ -55,6 +55,15 @@ public class TaskController {
 		List<Task> taskList = taskService.retrieveAll();
 		model.addObject("taskList", taskList);
 		model.setViewName("empTasks");
+		return model;
+
+	}
+	
+	@RequestMapping(value = "/viewTask/{taskId}")
+	public ModelAndView viewEmpTasks(ModelAndView model, @PathVariable Integer taskId) {
+		Task task = taskService.retrieveTask(taskId);
+		model.addObject("task", task);
+		model.setViewName("updateTask");
 		return model;
 
 	}

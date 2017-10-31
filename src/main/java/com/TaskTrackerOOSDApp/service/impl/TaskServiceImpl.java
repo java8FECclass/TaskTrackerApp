@@ -49,4 +49,9 @@ public class TaskServiceImpl implements TaskService {
 
 	}
 
+	@Override
+	public Task retrieveTask(Integer taskId) {	
+		return taskDAO.retrieveOne(taskId);
+	}
+
 }

@@ -20,7 +20,7 @@ public class TaskController {
 	// controller
 	@Autowired
 	TaskService taskService;
-	
+
 	// we are created an array task list and getting the content of the data for
 	// service layer and passing it to the task page
 	@RequestMapping(value = "/adminTasks")
@@ -30,9 +30,9 @@ public class TaskController {
 		model.setViewName("adminTasks");
 		return model;
 	}
-	
+
 	// if admin user pushes create task button then it goes to task creation
-	// page which would display task form. 
+	// page which would display task form.
 	@RequestMapping(value = "/taskForm")
 	public ModelAndView createTask(ModelAndView model) {
 		Task task = new Task();
@@ -58,7 +58,7 @@ public class TaskController {
 		return model;
 
 	}
-	
+
 	@RequestMapping(value = "/viewTask/{taskId}")
 	public ModelAndView viewEmpTasks(ModelAndView model, @PathVariable Integer taskId) {
 		Task task = taskService.retrieveTask(taskId);
@@ -67,4 +67,12 @@ public class TaskController {
 		return model;
 
 	}
+
+	@RequestMapping(value = "updateStatus/{taskId}/{status}", method=RequestMethod.GET)
+	public ModelAndView updateStatus(@PathVariable Integer taskId, @PathVariable String status) {
+		taskService.updateStatus(taskId, status);
+		return new ModelAndView("redirect:/empTasks");
+
+	}
+
 }

@@ -93,7 +93,7 @@ public class TaskDAOImpl implements TaskDAO {
 		// Statement implement update task class updates status and field "assignedTo"
 		// and retrieves data from overridden method in the Service Layer to change
 		// default to user name
-		String sql = "UPDATE task SET (status, assignedto) VALUES (?,?) where ID = ?";
+		String sql = "UPDATE task SET status=?, assignedto=? where ID = ?";
 		jdbcTemplate.update(sql, new Object[] { task.getStatus(), task.getAssignedTo(), task.getTaskId() });
 
 	}

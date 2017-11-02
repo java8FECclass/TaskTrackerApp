@@ -3,6 +3,7 @@ package com.TaskTrackerOOSDApp.dao.impl;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
@@ -24,18 +25,26 @@ public class UserDaoImpl implements UserDao {
 	}
 
 	@Override
+	// add error handling for read operation to return a null object if the record is not found try / catch
 	public User retrieveByUserName(String username) {
-		String sql = "select * from user where username=?";
-		User user = (User) jdbcTemplate.queryForObject(sql, new Object[] { username }, new RowMapper<User>() {
-			@Override
-			public User mapRow(ResultSet rs, int rowNum) throws SQLException {
-				User user = new User();
-				user.setName(rs.getString(1));
-				user.setPassword(rs.getString(2));
-				return user;
-			}
-		});
-		return user;
+		try {
+			String sql = "select * from user where username=?";
+			User user = (User) jdbcTemplate.queryForObject(sql, new Object[] { username }, new RowMapper<User>() {
+				@Override
+				public User mapRow(ResultSet rs, int rowNum) throws SQLException {
+					User user = new User();
+					user.setName(rs.getString(1));
+					user.setPassword(rs.getString(2));
+					return user;
+				}
+			});
+
+			return user;
+		}
+
+		catch (EmptyResultDataAccessException ex) {
+			return null;
+		}
 	}
 
 }

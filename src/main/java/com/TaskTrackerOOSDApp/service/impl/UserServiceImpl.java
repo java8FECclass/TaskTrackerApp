@@ -18,7 +18,8 @@ public class UserServiceImpl implements UserService {
 
 	@Autowired
 	UserDao userDao;
-
+	
+	@Override
 	public boolean isUserValid(User user) {
 		String userLoginName = user.getName();
 		String userLoginPassword = user.getPassword();

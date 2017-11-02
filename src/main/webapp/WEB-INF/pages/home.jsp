@@ -75,9 +75,9 @@
 
 
 				</form:form>
-				//
-				//hide the error display box if there is no error to report
-				//
+				<!--  -->
+                <!-- hide the error display box if there is no error to report  -->
+                <!-- 				-->
 				<c:if test="${not empty error}">
 					<table>
 						<tr>

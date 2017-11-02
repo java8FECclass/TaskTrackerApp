@@ -29,7 +29,7 @@
                         <span class="btn btn-primary">Assign</span>
                     </c:when>
                     <c:otherwise>
-
+<!-- link buttons to code in TaskController.java -->
                         <a href="${contextPath}/updateStatus/${task.taskId}/IN-PROGRESS">
                             <span class="btn btn-warning">IN-PROGRESS</span>
                         </a>

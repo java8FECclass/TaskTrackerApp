@@ -50,28 +50,37 @@ public class TaskController {
 
 	}
 
-	@RequestMapping(value = "/empTasks")
-	public ModelAndView viewEmpTasks(ModelAndView model) {
+	@RequestMapping(value = "/empTasks/{name}")
+	public ModelAndView viewEmpTasks(ModelAndView model, @PathVariable String name ) {
 		List<Task> taskList = taskService.retrieveAll();
 		model.addObject("taskList", taskList);
+		model.addObject(name);
 		model.setViewName("empTasks");
 		return model;
 
 	}
-
-	@RequestMapping(value = "/viewTask/{taskId}")
-	public ModelAndView viewEmpTasks(ModelAndView model, @PathVariable Integer taskId) {
+	
+	@RequestMapping(value = "/viewTask/{taskId}/{name}")
+	public ModelAndView viewEmpTasks(ModelAndView model, @PathVariable Integer taskId, @PathVariable String name) {
 		Task task = taskService.retrieveTask(taskId);
 		model.addObject("task", task);
+		model.addObject(name);
 		model.setViewName("updateTask");
 		return model;
 
 	}
 
-	@RequestMapping(value = "updateStatus/{taskId}/{status}", method=RequestMethod.GET)
-	public ModelAndView updateStatus(@PathVariable Integer taskId, @PathVariable String status) {
+	@RequestMapping(value = "updateStatus/{taskId}/{status}/{name}", method=RequestMethod.GET)
+	public ModelAndView updateStatus(@PathVariable Integer taskId, @PathVariable String status, @PathVariable String name) {
 		taskService.updateStatus(taskId, status);
-		return new ModelAndView("redirect:/empTasks");
+		return new ModelAndView("redirect:/empTasks/" + name);
+
+	}
+	
+	@RequestMapping(value = "updateAssignedTo/{taskId}/{name}", method=RequestMethod.GET)
+	public ModelAndView updateAssignedTo(@PathVariable Integer taskId, @PathVariable String name) {
+		taskService.updateAssignedTo(taskId, name);
+		return new ModelAndView("redirect:/empTasks/" + name);
 
 	}
 

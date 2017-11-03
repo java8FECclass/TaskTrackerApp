@@ -9,7 +9,8 @@
 <!-- This Titles The Page -->
 <title>Update Task</title>
 <!-- Adds the style sheet to make button red -->
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />
 </head>
 
 <body>
@@ -23,24 +24,28 @@
 				<p class="card-text">Status: ${task.status}</p>
 
 			</div>
-			  <!-- Split button -->
-                <c:choose>
-                    <c:when test="${task.assignedTo == 'UN-ASSIGNED'}">
-                        <span class="btn btn-primary">Assign</span>
-                    </c:when>
-                    <c:otherwise>
-<!-- link buttons to code in TaskController.java -->
-                        <a href="${contextPath}/updateStatus/${task.taskId}/IN-PROGRESS">
-                            <span class="btn btn-warning">IN-PROGRESS</span>
-                        </a>
+			<!-- Split button -->
+			<c:choose>
+				<c:when test="${task.assignedTo == 'UN-ASSIGNED'}">
+					<a href="${contextPath}/updateAssignedTo/${task.taskId}/${name}">
+						<span class="btn btn-primary">Assign</span>
+					</a>
+				</c:when>
+				<c:otherwise>
+					<!-- link buttons to code in TaskController.java -->
+					<a
+						href="${contextPath}/updateStatus/${task.taskId}/IN-PROGRESS/${name}">
+						<span class="btn btn-warning">IN-PROGRESS</span>
+					</a>
 
-                        <a href="${contextPath}/updateStatus/${task.taskId}/COMPLETED"> <span
-                            class="btn btn-success">COMPLETED</span>
-                        </a>
-                    </c:otherwise>
-                </c:choose>
+					<a
+						href="${contextPath}/updateStatus/${task.taskId}/COMPLETED/${name}">
+						<span class="btn btn-success">COMPLETED</span>
+					</a>
+				</c:otherwise>
+			</c:choose>
 
-			
+
 
 		</div>
 	</div>

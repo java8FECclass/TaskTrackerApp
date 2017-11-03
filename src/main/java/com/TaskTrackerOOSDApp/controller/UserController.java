@@ -49,7 +49,7 @@ public class UserController {
 			if (userService.isUserAdmin(userLoginFormObject)) {
 				model = new ModelAndView("redirect:/adminTasks");
 			} else {
-				model = new ModelAndView("redirect:/empTasks");
+				model = new ModelAndView("redirect:/empTasks/" + userLoginFormObject.getName());
 			}
 
 		}

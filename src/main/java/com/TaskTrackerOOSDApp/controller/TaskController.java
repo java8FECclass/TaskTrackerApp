@@ -93,7 +93,7 @@ public class TaskController {
 	automatically redirects to task page
 	 */
 	@RequestMapping(value = "updateAssignedTo/{taskId}/{name}", method=RequestMethod.GET)
-	public ModelAndView updateAssignedTo(@PathVariable Integer taskId, @PathVariable String name) {
+	public ModelAndView updateAssignedTo(@PathVariable Integer taskId, @PathVariable String name)  {
 		taskService.updateAssignedTo(taskId, name);
 		return new ModelAndView("redirect:/empTasks/" + name);
 
